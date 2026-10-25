@@ -21,7 +21,6 @@ body {
 
 h1, h2, h3 { font-family: 'Crimson Text', serif; color: var(--char-gold); }
 
-/* --- AUDIO CONTROLS (Fixed to screen, not page) --- */
 #audio-controls {
     position: fixed;
     bottom: 30px;
@@ -35,14 +34,14 @@ h1, h2, h3 { font-family: 'Crimson Text', serif; color: var(--char-gold); }
     padding: 8px 18px;
     border-radius: 50px;
     border: 1px solid var(--char-mint);
-    opacity: 0; /* Hidden until the rush is done */
+    opacity: 0;
     transition: opacity 1s ease;
 }
 
 #play-pause { background: none; border: none; color: var(--char-mint); cursor: pointer; font-size: 1rem; }
 #volume-slider { accent-color: var(--char-mint); width: 80px; cursor: pointer; }
 
-/* --- VINTAGE DOOR ENTRANCE --- */
+
 #entrance-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -85,7 +84,7 @@ h1, h2, h3 { font-family: 'Crimson Text', serif; color: var(--char-gold); }
 .open .left-door { transform: rotateY(-110deg); }
 .open .right-door { transform: rotateY(110deg); }
 
-/* --- MAIN CONTENT (The Room) --- */
+
 .main-wrapper {
     position: relative;
     width: 100%;
@@ -93,7 +92,7 @@ h1, h2, h3 { font-family: 'Crimson Text', serif; color: var(--char-gold); }
     background-color: var(--char-dark);
     padding: 0 20px;
     
-    /* Initial State: Visible but scaled down so it's seen through the door */
+
     transform: scale(0.4); 
     opacity: 0.6;
     filter: blur(4px);
@@ -186,11 +185,11 @@ h1, h2, h3 { font-family: 'Crimson Text', serif; color: var(--char-gold); }
 .resume-footer { text-align: center; padding: 100px 0; }
 .signature { margin-top: 30px; font-family: 'Crimson Text', serif; font-size: 1.5rem; color: var(--char-gold); }
 
-/* --- SLOW REVEAL ANIMATION --- */
+
 .reveal {
     opacity: 0;
     transform: translateY(40px);
-    transition: var(--transition-slow); /* Now 1.8 seconds */
+    transition: var(--transition-slow); 
 }
 
 .reveal.active {
@@ -201,3 +200,18 @@ h1, h2, h3 { font-family: 'Crimson Text', serif; color: var(--char-gold); }
 
 
 @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+
+@media (max-width: 768px) {
+    .contact-box {
+        width: 100%;       
+        min-width: 0;     
+        max-width: 100%;   
+        justify-content: flex-start; 
+    }
+
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
