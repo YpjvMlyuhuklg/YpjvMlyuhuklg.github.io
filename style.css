@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
+
+:root {
+    --char-dark: #1a1a1d;
+    --char-cream: #fdfcf0;
+    --char-mint: #a8d5ba;
+    --char-gold: #c5a059;
+    --transition-rush: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
+    --transition-slow: all 1.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--char-dark);
+    color: var(--char-cream);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 { font-family: 'Crimson Text', serif; color: var(--char-gold); }
+
+/* --- AUDIO CONTROLS (Fixed to screen, not page) --- */
+#audio-controls {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 1px solid var(--char-mint);
+    opacity: 0; /* Hidden until the rush is done */
+    transition: opacity 1s ease;
+}
+
+#play-pause { background: none; border: none; color: var(--char-mint); cursor: pointer; font-size: 1rem; }
+#volume-slider { accent-color: var(--char-mint); width: 80px; cursor: pointer; }
+
+/* --- VINTAGE DOOR ENTRANCE --- */
+#entrance-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000; 
+    transition: opacity 1.2s ease;
+}
+
+.door-frame {
+    position: relative;
+    width: 350px;
+    height: 500px;
+    border: 12px solid var(--char-dark);
+    box-shadow: 0 0 100px rgba(0,0,0,1);
+    perspective: 1500px;
+}
+
+.cafe-door {
+    position: absolute;
+    width: 50%; height: 100%;
+    background: var(--char-dark);
+    border: 3px solid var(--char-gold);
+    transition: var(--transition-rush);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.left-door { left: 0; transform-origin: left; }
+.right-door { right: 0; transform-origin: right; }
+.click-hint {
+    position: absolute;
+    bottom: -50px; width: 100%;
+    text-align: center; color: var(--char-mint);
+    font-style: italic; animation: pulse 2s infinite;
+}
+
+.open .left-door { transform: rotateY(-110deg); }
+.open .right-door { transform: rotateY(110deg); }
+
+/* --- MAIN CONTENT (The Room) --- */
+.main-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--char-dark);
+    padding: 0 20px;
+    
+    /* Initial State: Visible but scaled down so it's seen through the door */
+    transform: scale(0.4); 
+    opacity: 0.6;
+    filter: blur(4px);
+    transition: var(--transition-rush);
+    z-index: 1;
+}
+
+.main-wrapper.zoom-in {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+}
+
+.navbar {
+    position: sticky; top: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 50px;
+    background: rgba(26, 26, 29, 0.95);
+    border-bottom: 2px solid var(--char-mint);
+    z-index: 500;
+}
+
+.nav-logo { font-family: 'Crimson Text', serif; font-weight: bold; font-size: 1.5rem; color: var(--char-gold); }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a {
+    text-decoration: none; color: var(--char-cream);
+    font-size: 0.9rem; text-transform: uppercase;
+    transition: 0.3s; padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--char-mint); border-bottom: 2px solid var(--char-mint); }
+
+.hero { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.hero h1 { font-size: 4rem; margin-bottom: 1rem; }
+.tagline { font-size: 1.5rem; color: var(--char-mint); margin-bottom: 2rem; }
+.bio { max-width: 700px; font-size: 1.1rem; line-height: 1.8; opacity: 0.9; }
+
+.content-section { padding: 100px 0; border-bottom: 1px solid rgba(168, 213, 186, 0.2); }
+.section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.skill-card, .exp-card {
+    background: rgba(255,255,255,0.03);
+    padding: 30px; border: 1px solid var(--char-gold);
+    transition: var(--transition-rush); margin-bottom: 20px;
+}
+.skill-card:hover, .exp-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(168, 213, 186, 0.1); border-color: var(--char-mint);
+}
+
+.exp-header { display: flex; justify-content: space-between; margin-bottom: 15px; font-family: 'Crimson Text', serif; font-size: 1.4rem; }
+.exp-date { font-size: 0.85rem; color: var(--char-gold); margin-bottom: 10px; font-style: italic; opacity: 0.8; }
+.edu-container { display: flex; flex-direction: column; gap: 30px; max-width: 800px; margin: 0 auto; }
+.edu-item { display: flex; gap: 30px; border-left: 2px solid var(--char-mint); padding-left: 20px; }
+.year { font-weight: bold; color: var(--char-gold); min-width: 120px; }
+
+.contact-container {
+    display: flex;            
+    flex-wrap: wrap;          
+    justify-content: center;  
+    gap: 20px;
+    max-width: 1200px;        
+    margin: 0 auto;
+}
+
+.contact-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border: 1px solid var(--char-gold);
+    border-radius: 8px;
+    transition: 0.3s;
+    width: max-content;    
+    min-width: 250px;    
+    max-width: 90%;    
+}
+.contact-box:hover {
+    border-color: var(--char-mint);
+    background: rgba(168, 213, 186, 0.05);
+    transform: scale(1.03);
+}
+.contact-icon { font-size: 2rem; filter: grayscale(100%); transition: 0.3s; }
+.contact-box:hover .contact-icon { filter: grayscale(0%); }
+.contact-info h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--char-gold); margin-bottom: 5px; }
+.contact-info p, .contact-info a { color: var(--char-cream); text-decoration: none; font-weight: 300; overflow-wrap: break-word;  word-break: break-all; }
+
+.resume-footer { text-align: center; padding: 100px 0; }
+.signature { margin-top: 30px; font-family: 'Crimson Text', serif; font-size: 1.5rem; color: var(--char-gold); }
+
+/* --- SLOW REVEAL ANIMATION --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: var(--transition-slow); /* Now 1.8 seconds */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+@keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }

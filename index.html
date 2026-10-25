@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Resume | Fernandez, Rico G.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="audio-controls">
+        <button id="play-pause" title="Play/Pause">⏸</button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="jazz.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Entrance Overlay -->
+    <div id="entrance-overlay">
+        <div class="door-frame">
+            <div class="cafe-door left-door" id="door-l"></div>
+            <div class="cafe-door right-door" id="door-r"></div>
+            <p class="click-hint">Click to enter</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <div id="audio-controls">
+            <button id="play-pause" title="Play/Pause">⏸</button>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+        </div>
+
+        <nav class="navbar">
+            <div class="nav-logo">R. FERNANDEZ</div>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link active">About</a></li>
+                <li><a href="#skills" class="nav-link">Technical Arsenal</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <header id="about" class="hero reveal">
+            <h1>FERNANDEZ, RICO G.</h1>
+            <p class="tagline">Associate Developer | Cybersecurity Trainee</p>
+            <p class="bio">A knowledgeable developer with a strong technical foundation in both low-level systems and high-level application architecture. I am dedicated to mastering efficient, scalable code across multiple paradigms, leveraging a diverse toolkit that spans from legacy COBOL to modern Python and Java.</p>
+        </header>
+
+        <section id="skills" class="content-section reveal">
+            <h2 class="section-title">Technical Arsenal</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Systems & Low-Level</h3>
+                    <ul><li>C / C++</li><li>JAVA</li><li>COBOL</li></ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Application & Data</h3>
+                    <ul><li>Python</li><li>MySQL</li><li>Advanced Excel</li></ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Creative Toolset</h3>
+                    <ul><li>Blender</li><li>Photoshop</li><li>Premiere Pro</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="content-section reveal">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            
+            <div class="exp-card">
+                <div class="exp-header"><strong>Customer Service Associate</strong><span>Amazon Operation Services Philippines</span></div>
+                <div class="exp-date">01 Aug 2022 - 31 Jul 2023</div>
+                <p>Provided comprehensive voice and non-voice support for a high-volume retail account, resolving product inquiries and delivery logistics. Contributed to revenue protection by occasionally supporting the <strong>Concession Abuse Prevention Department</strong>, where I monitored and investigated account irregularities to ensure company compliance.</p>
+            </div>
+
+            
+            <div class="exp-card">
+                <div class="exp-header"><strong>Customer Service Associate / SME</strong><span>Concentrix CVG Philippines, Inc.</span></div>
+                <div class="exp-date">13 Sep 2021 - 1 Jul 2022</div>
+                <p>Managed telco account services, providing detailed financial account explanations and resolving complex billing disputes. Promoted to <strong>Subject Matter Expert (SME)</strong> within six months, taking on Case Management duties and mentoring new hires on operational workflows.</p>
+            </div>
+
+            
+
+        <section id="education" class="content-section reveal">
+            <h2 class="section-title">Educational Background</h2>
+            <div class="edu-container">
+                <div class="edu-item">
+                    <span class="year">2024 - Present</span>
+                    <div class="edu-text">
+                        <strong>B.S. in Information Technology</strong>
+                        <p>Polytechnic University of the Philippines, Sta. Mesa, Manila</p>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <span class="year">2014 - 2020</span>
+                    <div class="edu-text">
+                        <strong>Secondary Education</strong>
+                        <p>Arellano University (SHS) & Bangkal High School (JHS)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section reveal">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-box"><span class="contact-icon">📞</span><div class="contact-info"><h4>Phone</h4><p>0951 673 1500</p></div></div>
+                <div class="contact-box"><span class="contact-icon">✉️</span><div class="contact-info"><h4>Email</h4><a href="mailto:email@gmail.com">rico.fernandez.formal@gmail.com</a></div></div>
+                <div class="contact-box"><span class="contact-icon">📍</span><div class="contact-info"><h4>Location</h4><p>Philippines</p></div></div>
+            </div>
+        </section>
+
+        <footer class="resume-footer reveal">
+            <p><i>"Architecting logic with precision."</i></p>
+            <div class="signature"><strong>FERNANDEZ, RICO G.</strong></div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
